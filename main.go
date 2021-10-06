@@ -35,8 +35,24 @@ func main() {
 	for _, r := range res {
 		table.Append(r.Data())
 	}
-	table.Render() // Send output
+	//table.Render() // Send output
 
+	fmt.Println("MY OWN TABLE")
+	fmt.Printf("%s %s - %s       %s - %s \n", addEvenSpaces("Branch", 50), addEvenSpaces("Min", 5), addEvenSpaces("År", 10), addEvenSpaces("Max", 5), addEvenSpaces("År", 10))
+	fmt.Println("----------------------------------------------------------------------------------------")
+	for _, r := range res {
+		fmt.Printf("%s %s -  %s     %s - %s \n", addEvenSpaces(r.Industry, 50), addEvenSpaces(strconv.Itoa(r.Min), 5), addEvenSpaces(r.MinYear, 10), addEvenSpaces(strconv.Itoa(r.Max), 5), addEvenSpaces(r.MaxYear, 10))
+	}
+
+}
+
+func addEvenSpaces(str string, spaces int) string {
+	addSpace := spaces - len(str)
+
+	for i := 0; i < addSpace; i++ {
+		str += " "
+	}
+	return str
 }
 
 func industryMinMax(csvLines [][]string) []IndustryMinMax {
