@@ -3,7 +3,6 @@ package main
 import (
 	"encoding/csv"
 	"fmt"
-	"log"
 	"os"
 	"strconv"
 
@@ -29,8 +28,6 @@ func main() {
 
 	res := industryMinMax(csvLines)
 
-	fmt.Print("Branch;Minsta utsläpp;år minst utsläpp;Max utsläpp;år max utsläpp\n")
-
 	table := tablewriter.NewWriter(os.Stdout)
 	table.SetAutoWrapText(false)
 	table.SetHeader([]string{"Branch", "Minsta utsläpp", "år minst utsläpp", "Max utsläpp", "år max utsläpp"})
@@ -44,7 +41,6 @@ func main() {
 
 func industryMinMax(csvLines [][]string) []IndustryMinMax {
 	years := csvLines[0][1:]
-	log.Print(years)
 
 	industriesMinMax := []IndustryMinMax{}
 
